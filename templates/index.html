@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scam checker</title>
+  <meta name="description" content="Paste a message or a link and see whether it looks like a scam, with the exact reasons.">
+  <link rel="icon" href="data:,">
+  
+  <!-- FIX: Use url_for to point to static/style.css and static/app.js -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+<main class="page">
+
+  <header class="intro">
+    <h1>Is this message a scam?</h1>
+    <p>Paste a message or a link. You get a risk level and the exact reasons behind it. Works in English, French, Spanish and Arabic.</p>
+  </header>
+
+  {% if error %}
+  <p class="error" role="alert">{{ error }}</p>
+  {% endif %}
+
+  {% if result %}
+  <section id="result" class="result {{ result.key }}" aria-labelledby="verdict">
+    <div class="verdict">
+      {% if result.key == "low" %}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7.5 12.5l3 3 6-7"/></svg>
+      {% elif result.key == "mid" %}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18h.01"/></svg>
+      {% else %}
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8l6 6v8l-6 6H8l-6-6V8z"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+      {% endif %}
+      <div>
+        <h2 id="verdict">{{ result.verdict.capitalize() }}</h2>
+        <p class="lead">{{ result.title }}</p>
+      </div>
+    </div>
+
+    <div class="meter" role="img" aria-label="Score {{ result.score }}. Under 4 is low risk, 4 to 7 is suspicious, 8 or more is high risk.">
+      {% for i in range(12) %}<span class="cell zone{{ i // 4 }}{% if i < result.cells %} on{% endif %}"></span>{% endfor %}
+    </div>
+    <p class="score">Score {{ result.score }}</p>
+    <p class="advice">{{ result.advice }}</p>
+  </section>
+
+  {% if result.segments %}
+  <section class="panel">
+    <h3>Your message, marked up</h3>
+    <p class="marked-text" dir="auto">{% for s in result.segments %}{% if s.mark %}<mark title="{{ s.mark.category }} (+{{ s.mark.points }})">{{ s.text }}<span class="visually-hidden"> (flagged: {{ s.mark.category }})</span></mark>{% else %}{{ s.text }}{% endif %}{% endfor %}</p>
+    <p class="note">Marked phrases matched our scam list. Each one adds to the score.</p>
+  </section>
+  {% endif %}
+
+  <section class="panel">
+    <h3>Why</h3>
+    {% if result.reasons_view %}
+    <ul class="reasons">
+      {% for r in result.reasons_view %}
+      <li><span>{{ r.text }}</span>{% if r.points %}<span class="pts">+{{ r.points }}</span>{% endif %}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="note">Nothing in this message matched our checks.</p>
+    {% endif %}
+
+    <details class="checks">
+      <summary>What was checked</summary>
+      <p>Ran: {{ result.checks_run|join(", ") }}.</p>
+      {% if result.skipped %}
+      <p>Could not run: {{ result.skipped|join(", ") }}. These need internet access, a key, or a page that opens.</p>
+      {% endif %}
+    </details>
+  </section>
+  {% endif %}
+
+  <form method="post" action="/#result" class="check" id="check-form">
+    <label for="text" class="field-label">Message or link</label>
+    <textarea id="text" name="text" rows="6" maxlength="{{ max_chars }}" dir="auto" placeholder="Paste the message or link here" required>{{ text }}</textarea>
+
+    <div class="examples">
+      <span>Try an example:</span>
+      {% for e in examples %}
+      <button type="button" class="chip" data-text="{{ e.text }}">{{ e.label }}</button>
+      {% endfor %}
+    </div>
+
+    <label class="option">
+      <input type="checkbox" name="online" {% if online %}checked{% endif %}>
+      <span>Also open the link and check the website
+        <small>Turn this off to check only the link's address. Opening a link can take several seconds.</small>
+      </span>
+    </label>
+
+    <button type="submit" class="submit">Check</button>
+  </form>
+
+  <footer class="foot">
+    <p>We do not store the messages you check. With the website option on, our server opens the link, not your phone, and looks up the domain's age at rdap.org. A low score never proves a site is safe.</p>
+  </footer>
+
+</main>
+</body>
+</html>

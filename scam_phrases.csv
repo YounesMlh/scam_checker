@@ -1,0 +1,101 @@
+phrase,language,points,category
+act now,English,2,urgency
+urgent,English,2,urgency
+limited time offer,English,2,urgency
+your account will be closed,English,4,threat
+account suspended,English,4,threat
+unusual activity detected,English,3,threat
+verify your account,English,5,credentials
+confirm your password,English,5,credentials
+enter your pin,English,5,credentials
+update your payment details,English,4,credentials
+bank details,English,4,money
+send money,English,3,money
+gift card,English,3,money
+wire transfer,English,3,money
+you have won,English,4,prize
+claim your prize,English,4,prize
+free money,English,4,prize
+congratulations you have been selected,English,3,prize
+lottery winner,English,4,prize
+your package is on hold,English,3,delivery
+pay customs fee,English,4,delivery
+earn money from home,English,3,job
+double your money,English,5,investment
+guaranteed profit,English,4,investment
+do not tell anyone,English,4,secrecy
+agissez maintenant,French,2,urgency
+très urgent,French,2,urgency
+offre à durée limitée,French,2,urgency
+votre compte sera fermé,French,4,threat
+compte suspendu,French,4,threat
+activité inhabituelle détectée,French,3,threat
+vérifiez votre compte,French,5,credentials
+confirmez votre mot de passe,French,5,credentials
+entrez votre code pin,French,5,credentials
+mettez à jour vos informations de paiement,French,4,credentials
+coordonnées bancaires,French,4,money
+envoyez de l'argent,French,3,money
+carte cadeau,French,3,money
+virement bancaire,French,3,money
+vous avez gagné,French,4,prize
+réclamez votre prix,French,4,prize
+argent gratuit,French,4,prize
+félicitations vous avez été sélectionné,French,3,prize
+gagnant de la loterie,French,4,prize
+votre colis est en attente,French,3,delivery
+payez les frais de douane,French,4,delivery
+gagnez de l'argent depuis chez vous,French,3,job
+doublez votre argent,French,5,investment
+profit garanti,French,4,investment
+ne le dites à personne,French,4,secrecy
+actúe ahora,Spanish,2,urgency
+urgente,Spanish,2,urgency
+oferta por tiempo limitado,Spanish,2,urgency
+su cuenta será cerrada,Spanish,4,threat
+cuenta suspendida,Spanish,4,threat
+actividad inusual detectada,Spanish,3,threat
+verifique su cuenta,Spanish,5,credentials
+confirme su contraseña,Spanish,5,credentials
+ingrese su pin,Spanish,5,credentials
+actualice sus datos de pago,Spanish,4,credentials
+datos bancarios,Spanish,4,money
+envíe dinero,Spanish,3,money
+tarjeta de regalo,Spanish,3,money
+transferencia bancaria,Spanish,3,money
+ha ganado,Spanish,4,prize
+reclame su premio,Spanish,4,prize
+dinero gratis,Spanish,4,prize
+felicidades ha sido seleccionado,Spanish,3,prize
+ganador de la lotería,Spanish,4,prize
+su paquete está retenido,Spanish,3,delivery
+pague la tarifa de aduana,Spanish,4,delivery
+gane dinero desde casa,Spanish,3,job
+duplique su dinero,Spanish,5,investment
+ganancia garantizada,Spanish,4,investment
+no se lo diga a nadie,Spanish,4,secrecy
+تصرف الآن,Arabic,2,urgency
+عاجل,Arabic,2,urgency
+عرض لفترة محدودة,Arabic,2,urgency
+سيتم إغلاق حسابك,Arabic,4,threat
+تم تعليق حسابك,Arabic,4,threat
+تم اكتشاف نشاط غير عادي,Arabic,3,threat
+تحقق من حسابك,Arabic,5,credentials
+أكد كلمة المرور,Arabic,5,credentials
+أدخل الرقم السري,Arabic,5,credentials
+حدث بيانات الدفع الخاصة بك,Arabic,4,credentials
+بيانات حسابك البنكي,Arabic,4,money
+أرسل المال,Arabic,3,money
+بطاقة هدية,Arabic,3,money
+حوالة بنكية,Arabic,3,money
+لقد فزت,Arabic,4,prize
+اطلب جائزتك,Arabic,4,prize
+مال مجاني,Arabic,4,prize
+مبروك لقد تم اختيارك,Arabic,3,prize
+الفائز في اليانصيب,Arabic,4,prize
+طردك معلق,Arabic,3,delivery
+ادفع رسوم الجمارك,Arabic,4,delivery
+اربح المال من المنزل,Arabic,3,job
+ضاعف أموالك,Arabic,5,investment
+ربح مضمون,Arabic,4,investment
+لا تخبر أحدا,Arabic,4,secrecy
